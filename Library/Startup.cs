@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using LibraryData;
+using LibraryServices;
 
 namespace Library
 {
@@ -26,7 +27,9 @@ namespace Library
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddSingleton(Configuration);
+            services.AddScoped<ILibraryAsset, LibraryAssetService>();
+            services.AddScoped<ICheckout, CheckoutService>();
             services.AddDbContext<LibraryContext>(options 
                 => options.UseSqlServer(Configuration.GetConnectionString("LibraryConnection")));
         }

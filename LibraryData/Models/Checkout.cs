@@ -11,7 +11,6 @@ namespace LibraryData.Models
 
         [Required]
         public LibraryAsset LibraryAsset { get; set; }
-
         public LibraryCard LibraryCard { get; set; }
         public DateTime Since { get; set; }
         public DateTime Until { get; set; }
